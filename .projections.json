@@ -1,0 +1,4 @@
+{
+  "lib/vagrant-vultr/action.rb": {"type": "action"},
+  "lib/vagrant-vultr/action/*.rb": {"type": "action"}
+}
