@@ -71,10 +71,8 @@ module VagrantPlugins
           b.use ConfigValidate
           b.use Call, CheckState do |env, b2|
             case env[:machine_state]
-            when :active
+            when :active, :off
               b2.use Destroy
-            when :off
-              env[:ui].info 'Machine is not booted.'
             when :not_created
               env[:ui].info 'Machine is not created.'
             end
