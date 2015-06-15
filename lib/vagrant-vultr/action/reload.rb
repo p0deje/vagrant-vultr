@@ -15,9 +15,6 @@ module VagrantPlugins
 
         def call(env)
           @client.reboot_server(@machine.id)
-
-          env[:ui].info 'Waiting for server to stop...'
-          @client.wait_to_power_off(@machine.id)
           env[:ui].info 'Machine is stopped.'
 
           env[:ui].info 'Waiting for server to start...'

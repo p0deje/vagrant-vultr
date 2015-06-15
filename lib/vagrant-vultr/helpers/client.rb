@@ -118,14 +118,6 @@ module VagrantPlugins
           end
         end
 
-        def wait_to_power_off(sub_id)
-          wait_until do
-            # it might be not shown in API for some reason
-            server = server(sub_id)
-            server && server['power_status'] != 'running'
-          end
-        end
-
         def wait_to_destroy(sub_id)
           wait_until { !server(sub_id) }
         end
