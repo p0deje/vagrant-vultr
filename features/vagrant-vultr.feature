@@ -11,8 +11,11 @@ Feature: vagrant-vultr
       Vagrant.configure(2) do |config|
         config.vm.box = 'vultr'
         config.vm.synced_folder '.', '/vagrant', type: 'rsync'
-        config.vm.provision 'shell', inline: 'echo "it works" > /tmp/vultr-provision'
         config.ssh.private_key_path = '~/.ssh/id_rsa'
+
+        config.vm.provision 'shell',
+          inline: 'echo "it works" > /tmp/vultr-provision',
+          privileged: false
       end
       """
 
