@@ -83,7 +83,7 @@ module VagrantPlugins
 
         def vps_plan_id(plan)
           plans = request { ::Vultr::Plan.list }
-          plans.values.find { |p| p['name'] = plan }['VPSPLANID']
+          plans.values.find { |p| p['name'] == plan }['VPSPLANID']
         end
 
         def ssh_keys
