@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name        = 'vagrant-vultr'
-  spec.version     = '0.1.0'
+  spec.version     = '0.1.1'
   spec.author      = 'Alex Rodionov'
   spec.email       = 'p0deje@gmail.com'
   spec.homepage    = 'http://github.com/p0deje/vagrant-vultr'
