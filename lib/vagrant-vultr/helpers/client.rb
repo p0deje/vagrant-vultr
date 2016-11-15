@@ -74,7 +74,7 @@ module VagrantPlugins
         end
 
         def regions
-          request { ::Vultr::Region.list }.values
+          request { ::Vultr::Regions.list }.values
         end
 
         def region_id(region)
@@ -82,7 +82,7 @@ module VagrantPlugins
         end
 
         def vps_plan_id(plan)
-          plans = request { ::Vultr::Plan.list }
+          plans = request { ::Vultr::Plans.list }
           plans.values.find { |p| p['name'] == plan }['VPSPLANID']
         end
 
