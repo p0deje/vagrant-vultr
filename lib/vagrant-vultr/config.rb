@@ -6,6 +6,8 @@ module VagrantPlugins
       attr_accessor :os
       attr_accessor :snapshot
       attr_accessor :plan
+      attr_accessor :enable_ipv6
+      attr_accessor :enable_private_network
 
       # @api private
       attr_accessor :ssh_key_id
@@ -16,6 +18,8 @@ module VagrantPlugins
         @os = UNSET_VALUE
         @snapshot = UNSET_VALUE
         @plan = UNSET_VALUE
+        @enable_ipv6 = UNSET_VALUE
+        @enable_private_network = UNSET_VALUE
       end
 
       def finalize!
@@ -24,6 +28,8 @@ module VagrantPlugins
         @os = 'Ubuntu 14.04 x64' if @os == UNSET_VALUE && @snapshot == UNSET_VALUE
         @plan = '768 MB RAM,15 GB SSD,1.00 TB BW' if @plan == UNSET_VALUE
         @snapshot = nil if @snapshot == UNSET_VALUE
+        @enable_ipv6 = 'no' if @enable_ipv6 == UNSET_VALUE
+        @enable_private_network = 'no' if @enable_private_network == UNSET_VALUE
       end
 
       def validate(machine)

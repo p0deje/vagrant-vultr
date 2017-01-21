@@ -37,7 +37,9 @@ module VagrantPlugins
           params = {
             DCID: region_id(attributes[:region]),
             VPSPLANID: vps_plan_id(attributes[:plan]),
-            SSHKEYID: ssh_key_id(attributes[:ssh_key_name])
+            SSHKEYID: ssh_key_id(attributes[:ssh_key_name]),
+            enable_ipv6: attributes[:enable_ipv6],
+            enable_private_network: attributes[:enable_private_network]
           }
 
           if attributes[:snapshot]
