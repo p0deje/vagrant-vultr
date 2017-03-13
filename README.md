@@ -46,6 +46,7 @@ Notes
 
 1. You have to specify `override.ssh.private_key_path`. Public key will be uploaded to Vultr as "vagrant" SSH key and will be used when servers are created.
 2. Currently, servers are created with "root" user.
+3. If you hit API rate limit, you can set `VULTR_RATE_LIMIT_INTERVAL_MS` environment variable to introduce delay between API requests.
 
 Testing
 -------

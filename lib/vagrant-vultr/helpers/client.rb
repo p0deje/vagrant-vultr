@@ -136,6 +136,10 @@ module VagrantPlugins
         private
 
         def request
+          if interval = ENV['VULTR_RATE_LIMIT_INTERVAL_MS']
+            sleep interval.to_f / 1000
+          end
+
           response = yield
           if response[:status] != 200
             raise "API request failed: #{response[:result]}."
