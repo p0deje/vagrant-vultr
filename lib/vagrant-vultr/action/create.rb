@@ -21,6 +21,8 @@ module VagrantPlugins
 		  enable_ipv6 = env[:machine].provider_config.enable_ipv6
 		  enable_private_network = env[:machine].provider_config.enable_private_network
           label    = env[:machine].provider_config.label
+          tag      = env[:machine].provider_config.tag
+          hostname = env[:machine].provider_config.hostname
 
           @logger.info "Creating server with:"
           @logger.info "  -- Region: #{region}"
@@ -30,6 +32,8 @@ module VagrantPlugins
           @logger.info "  -- Enable IPv6: #{enable_ipv6}"
           @logger.info "  -- Enable Private Network: #{enable_private_network}"
           @logger.info "  -- Label: #{label}"
+          @logger.info "  -- Tag: #{tag}"
+          @logger.info "  -- Hostname: #{hostname}"
 
           attributes = {
             region: region,
@@ -39,6 +43,8 @@ module VagrantPlugins
             enable_ipv6: enable_ipv6,
             enable_private_network: enable_private_network,
             label: label,
+            tag: tag,
+            hostname: hostname,
             ssh_key_name: Action::SetupSSHKey::NAME
           }
           @machine.id = @client.create_server(attributes)
