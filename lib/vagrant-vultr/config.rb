@@ -8,6 +8,9 @@ module VagrantPlugins
       attr_accessor :plan
       attr_accessor :enable_ipv6
       attr_accessor :enable_private_network
+      attr_accessor :label
+      attr_accessor :tag
+      attr_accessor :hostname
 
       # @api private
       attr_accessor :ssh_key_id
@@ -20,6 +23,9 @@ module VagrantPlugins
         @plan = UNSET_VALUE
         @enable_ipv6 = UNSET_VALUE
         @enable_private_network = UNSET_VALUE
+        @label    = UNSET_VALUE
+        @tag      = UNSET_VALUE
+        @hostname = UNSET_VALUE
       end
 
       def finalize!
@@ -30,6 +36,9 @@ module VagrantPlugins
         @snapshot = nil if @snapshot == UNSET_VALUE
         @enable_ipv6 = 'no' if @enable_ipv6 == UNSET_VALUE
         @enable_private_network = 'no' if @enable_private_network == UNSET_VALUE
+        @label    = '' if @label    == UNSET_VALUE
+        @tag      = '' if @tag      == UNSET_VALUE
+        @hostname = '' if @hostname == UNSET_VALUE
       end
 
       def validate(machine)

@@ -31,6 +31,11 @@ Vagrant.configure(2) do |config|
     # Use either OS name or Snapshot identifier
     vultr.os = 'Ubuntu 14.04 x64'
     vultr.snapshot = '524557af2439b'
+
+    # Optional parameters
+    vultr.label    = 'My Label'
+    vultr.tag      = 'My Tag'
+    vultr.hostname = 'myhostname'
   end
 end
 ```
