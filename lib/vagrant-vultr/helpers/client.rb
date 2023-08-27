@@ -34,9 +34,10 @@ module VagrantPlugins
         end
 
         def create_server(attributes)
+          location_id = region_id(attributes[:region])
           params = {
-            DCID: region_id(attributes[:region]),
-            VPSPLANID: vps_plan_id(attributes[:plan]),
+            DCID: location_id,
+            VPSPLANID: vps_plan_id(attributes[:plan], location_id.class.name == "String" ? location_id.to_i : location_id),
             SSHKEYID: ssh_key_id(attributes[:ssh_key_name]),
             enable_ipv6: attributes[:enable_ipv6],
             enable_private_network: attributes[:enable_private_network],
@@ -86,9 +87,9 @@ module VagrantPlugins
           regions.find { |r| r['name'] == region }['DCID']
         end
 
-        def vps_plan_id(plan)
+        def vps_plan_id(plan, location_id)
           plans = request { ::Vultr::Plans.list }
-          plans.values.find { |p| p['name'] == plan }['VPSPLANID']
+          plans.values.find { |p| p['name'] == plan && p['available_locations']&.include?(location_id) }['VPSPLANID']
         end
 
         def ssh_keys
