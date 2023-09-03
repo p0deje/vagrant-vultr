@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   spec.require_paths = %w[lib]
 
-  spec.add_dependency 'vultr'
+  spec.add_dependency 'vultr', '0.3.5'
 
   spec.add_development_dependency 'aruba'
   spec.add_development_dependency 'pry'
